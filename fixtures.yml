@@ -1,0 +1,26 @@
+App\Entity\Manufacturer:
+    manufacturer{1..10}:
+        name: '<company()>'
+App\Entity\Food:
+    food{1..50}:
+        name: '<ingredient()>'
+        manufacturer: '@manufacturer*'
+        servingSize: '<numberBetween(50, 100)> gr'
+        calories: '<numberBetween(10, 700)>'
+        carbs: '<numberBetween(20, 200)>'
+        fat: '<numberBetween(10, 100)>'
+        protein: '<numberBetween(10, 100)>'
+App\Entity\Meal:
+    meal{Breakfast, Lunch, Dinner}:
+        name: '<current()>'
+App\Entity\Diary:
+    diary{1..100}:
+        date: '<dateTimeThisMonth()>'
+        meal: '@meal*'
+        food: '@food*'
+        quantity: '<numberBetween(1, 3)>'
+App\Entity\Profile:
+    profile:
+        username: 'test'
+        # Lazy way of doing this: Password for "test"
+        password: '\$2y\$10\$xpjta9hjqd.ILs2ig7bnYOep9daAbsks.gikWeQNDsHHOQbtrHv4y'
