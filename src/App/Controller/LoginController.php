@@ -8,6 +8,10 @@ use App\Service\JwtService;
 use Bezhanov\Silex\Routing\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Lcobucci\JWT\Builder;
+use Lcobucci\JWT\Parser;
+use Lcobucci\JWT\Signer\Hmac\Sha256;
+use Lcobucci\JWT\Token;
 
 class LoginController extends BaseController
 {
@@ -23,7 +27,7 @@ class LoginController extends BaseController
     public function __construct(EntityManagerInterface $em, JwtService $jwtTokenCreator)
     {
         $this->em = $em;
-        $this->jwtTokenCreator = $jwtTokenCreator;
+        $this->jwtTokenCreator = new jwtService(new Builder(), new Parser(), new Sha256(), '!1dpn6S83!@#');
     }
 
     /**

@@ -26,11 +26,11 @@ $app->before(function(Request $request, Application $app) {
         // do not require authorization on "/login" page and for OPTIONS requests
         return;
     }
-    if (!$request->headers->get('Authorization')) {
+    if (!$request->headers->get('Authorization2')) {
         throw new HttpException(Response::HTTP_UNAUTHORIZED);
     } else {
         $jwtService = $app['jwt.service'];
-        $token = str_replace('Bearer ', '', $request->headers->get('Authorization'));
+        $token = str_replace('Bearer ', '', $request->headers->get('Authorization2'));
 
         if (!$jwtService->validateToken($token)) {
             throw new HttpException(Response::HTTP_UNAUTHORIZED);

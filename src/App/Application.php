@@ -70,7 +70,7 @@ class Application extends \Silex\Application
                 'orm.cache.instances.default.metadata' => $app['cache'],
                 'orm.cache.instances.default.hydration' => $app['cache'],
                 'orm.proxies_dir' => $app['cache']->getDirectory() . '/proxy',
-                'orm.auto_generate_proxies' => false,
+                'orm.auto_generate_proxies' => true,
                 'orm.em.options' => [
                     'mappings' => [
                         [
